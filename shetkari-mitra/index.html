@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shetkari Mitra - Farmer's Friend</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/auth-styles.css">
+    <link rel="stylesheet" href="css/dashboard-styles.css">
+</head>
+<body class="font-[Poppins] bg-gray-50">
+    <div id="app" class="min-h-screen">
+        <!-- Authentication or Dashboard will be loaded here -->
+    </div>
+
+    <!-- Hidden dashboard template -->
+    <template id="dashboardTemplate">
+        <div class="min-h-screen bg-gray-100">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                    <h1 class="text-2xl font-bold text-green-700">Shetkari Mitra</h1>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <button id="languageDropdown" class="flex items-center text-gray-700">
+                                <i class="fas fa-language mr-2"></i>
+                                <span>English</span>
+                                <i class="fas fa-chevron-down ml-1"></i>
+                            </button>
+                            <div id="languageMenu" class="hidden absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" data-lang="en">English</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" data-lang="hi">हिंदी</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100" data-lang="mr">मराठी</a>
+                            </div>
+                        </div>
+                        <button id="logoutBtn" class="text-red-600 hover:text-red-800">
+                            <i class="fas fa-sign-out-alt mr-1"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Sidebar Navigation -->
+                    <div class="md:col-span-1">
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                    <i class="fas fa-user text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium" id="userName">Farmer Name</h3>
+                                    <p class="text-sm text-gray-500">Premium Member</p>
+                                </div>
+                            </div>
+                            <nav class="space-y-2">
+                                <a href="#" class="block px-3 py-2 rounded bg-green-50 text-green-700 font-medium">
+                                    <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+                                </a>
+                                <a href="#crop-disease" class="block px-3 py-2 rounded hover:bg-gray-100">
+                                    <i class="fas fa-bug mr-2"></i> Crop Diseases
+                                </a>
+                                <a href="#fertilizers" class="block px-3 py-2 rounded hover:bg-gray-100">
+                                    <i class="fas fa-seedling mr-2"></i> Fertilizers
+                                </a>
+                                <a href="#news-schemes" class="block px-3 py-2 rounded hover:bg-gray-100">
+                                    <i class="fas fa-newspaper mr-2"></i> News & Schemes
+                                </a>
+                                <a href="#crop-trading" class="block px-3 py-2 rounded hover:bg-gray-100">
+                                    <i class="fas fa-exchange-alt mr-2"></i> Crop Trading
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Main Dashboard Content -->
+                    <div class="md:col-span-3 space-y-6">
+                        <!-- Welcome Banner -->
+                        <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-lg shadow p-6 text-white">
+                            <h2 class="text-2xl font-bold mb-2">Welcome back!</h2>
+                            <p class="mb-4">Get the latest farming insights and manage your agricultural activities.</p>
+                            <div class="flex space-x-4">
+                                <div class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                                    <span id="currentDate"></span>
+                                </div>
+                                <div class="bg-white bg-opacity-20 px-4 py-2 rounded-full">
+                                    <span id="weatherInfo">Sunny, 28°C</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feature Sections (will be loaded dynamically) -->
+                        <div id="featureContent">
+                            <!-- Content will be loaded here based on navigation -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </template>
+    <!-- Cropper JS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    
+    <!-- Marketplace Resources -->
+    <script src="js/marketplace.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/disease-detection.js"></script>
+</body>
+</html>
