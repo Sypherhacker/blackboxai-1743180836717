@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marketplace (Chrome Compatible)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .price-board {
+            background: #f5f5f5;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .sell-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .sell-btn:hover {
+            background: #45a049;
+        }
+        #sell-form {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            display: none;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1>Farmer's Marketplace</h1>
+    
+    <div class="price-board">
+        <h2>Current Market Prices</h2>
+        <div class="price-row">
+            <span><strong>Wheat:</strong> ₹2,150 per quintal</span>
+            <button class="sell-btn" onclick="showForm('wheat', 2150)">Sell</button>
+        </div>
+        <div class="price-row">
+            <span><strong>Rice:</strong> ₹1,890 per quintal</span>
+            <button class="sell-btn" onclick="showForm('rice', 1890)">Sell</button>
+        </div>
+        <div class="price-row">
+            <span><strong>Cotton:</strong> ₹6,700 per quintal</span>
+            <button class="sell-btn" onclick="showForm('cotton', 6700)">Sell</button>
+        </div>
+    </div>
+
+    <div id="sell-form">
+        <h2>Sell Your Crops</h2>
+        <form onsubmit="submitForm(event)">
+            <div>
+                <label for="crop">Crop:</label>
+                <input type="text" id="crop" readonly>
+            </div>
+            <div>
+                <label for="price">Price (per quintal):</label>
+                <input type="number" id="price" readonly>
+            </div>
+            <div>
+                <label for="quantity">Quantity (quintals):</label>
+                <input type="number" id="quantity" required>
+            </div>
+            <button type="submit" style="margin-top:15px">List for Sale</button>
+        </form>
+    </div>
+
+    <script>
+        function showForm(crop, price) {
+            document.getElementById('crop').value = crop;
+            document.getElementById('price').value = price;
+            document.getElementById('sell-form').style.display = 'block';
+            document.getElementById('quantity').focus();
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            const crop = document.getElementById('crop').value;
+            const price = document.getElementById('price').value;
+            const quantity = document.getElementById('quantity').value;
+            
+            alert(`Success! Listed ${quantity} quintals of ${crop} at ₹${price}/quintal`);
+            document.getElementById('sell-form').style.display = 'none';
+            document.getElementById('quantity').value = '';
+        }
+    </script>
+</body>
+</html>
