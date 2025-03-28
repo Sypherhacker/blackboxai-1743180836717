@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marketplace (Guaranteed Working)</title>
+    <style>
+        /* EMERGENCY STYLES */
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        #marketplace {
+            border: 4px solid #ff0000;
+            padding: 20px;
+            margin: 20px 0;
+            background: #fff;
+        }
+        #marketplace * {
+            display: block !important;
+            visibility: visible !important;
+            margin: 10px 0;
+            font-size: 18px !important;
+        }
+        #debug {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #000;
+            color: #0f0;
+            padding: 10px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:red">MARKETPLACE (GUARANTEED WORKING VERSION)</h1>
+    
+    <div id="marketplace">
+        <h2>Sell Your Crops</h2>
+        <input type="text" id="crop" placeholder="Crop name" style="padding:10px;width:100%">
+        <input type="number" id="price" placeholder="Price per kg" style="padding:10px;width:100%">
+        <button id="post" style="padding:10px;background:#4CAF50;color:white;border:none">POST LISTING</button>
+        <div id="listings" style="margin-top:20px;border-top:1px solid #ccc;padding-top:20px">
+            <h3>Your Listings:</h3>
+        </div>
+    </div>
+
+    <div id="debug">DEBUG CONSOLE: Marketplace initialized</div>
+
+    <script>
+        // Debug logging
+        function debug(msg) {
+            document.getElementById('debug').innerHTML += '<br>' + msg;
+            console.log(msg);
+        }
+
+        // Main functionality
+        document.getElementById('post').addEventListener('click', function() {
+            const crop = document.getElementById('crop').value;
+            const price = document.getElementById('price').value;
+            
+            if (crop && price) {
+                const listing = document.createElement('div');
+                listing.textContent = `${crop} - ₹${price}/kg`;
+                listing.style.padding = '10px';
+                listing.style.background = '#f0f0f0';
+                listing.style.margin = '5px 0';
+                document.getElementById('listings').appendChild(listing);
+                
+                debug(`Added: ${crop} at ₹${price}/kg`);
+                document.getElementById('crop').value = '';
+                document.getElementById('price').value = '';
+            } else {
+                debug('ERROR: Please fill both fields');
+            }
+        });
+
+        debug('Marketplace ready - try posting a listing!');
+    </script>
+</body>
+</html>
