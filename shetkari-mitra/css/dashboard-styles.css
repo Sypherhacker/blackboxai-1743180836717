@@ -1,0 +1,68 @@
+/* Dashboard Interactive Styles */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Search and Filter */
+.price-search, .scheme-search {
+  transition: all 0.3s;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem 0.25rem 1.75rem;
+}
+
+.price-search:focus, .scheme-search:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 1px #4CAF50;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0aec0;
+}
+
+/* Table Styles */
+.market-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.market-table th {
+  background-color: #f7fafc;
+  font-weight: 500;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.market-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Interactive Cards */
+.scheme-item, .dashboard-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scheme-item:hover, .dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Advisory Toggle */
+.advisory-toggle {
+  transition: transform 0.3s;
+}
+
+.advisory-toggle.active {
+  transform: rotate(180deg);
+}
