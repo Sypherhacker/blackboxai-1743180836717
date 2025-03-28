@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body style="background:red;color:white;font-size:40px;text-align:center;padding:100px">
+    <h1>SERVER IS WORKING!</h1>
+    <script>
+        // Create visible output
+        document.write('<p style="color:yellow">JavaScript is working</p>');
+        
+        // Create debug console
+        const debug = document.createElement('div');
+        debug.style.position = 'fixed';
+        debug.style.bottom = '0';
+        debug.style.left = '0';
+        debug.style.right = '0';
+        debug.style.background = 'black';
+        debug.style.color = 'lime';
+        debug.style.padding = '10px';
+        debug.style.fontFamily = 'monospace';
+        debug.textContent = 'DEBUG: Script executed successfully';
+        document.body.appendChild(debug);
+        
+        // Force alert
+        alert("This page is working correctly!");
+    </script>
+</body>
+</html>
