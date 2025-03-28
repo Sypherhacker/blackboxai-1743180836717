@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Marketplace</title>
+    <style>
+        /* High-visibility styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            padding: 20px;
+        }
+        .marketplace {
+            border: 5px solid #4CAF50;
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2E8B57;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        .price-board {
+            background: #F5FFFA;
+            border: 2px dashed #2E8B57;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        .price-row {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .crop-name {
+            font-weight: bold;
+            width: 100px;
+            color: #2E8B57;
+        }
+        .crop-price {
+            flex: 1;
+            color: #2E8B57;
+        }
+        .sell-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sell-btn:hover {
+            background: #45a049;
+        }
+        .sell-btn i {
+            font-size: 14px;
+        }
+        .hidden {
+            display: none;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2E8B57;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #4CAF50;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .debug {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #333;
+            color: #0f0;
+            padding: 10px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="marketplace">
+        <h1>🛒 Farmer's Marketplace</h1>
+        
+        <div class="price-board">
+            <h2>Current Market Prices</h2>
+            <div class="price-row">
+                <span class="crop-name">Wheat:</span>
+                <span class="crop-price">₹2,150/quintal</span>
+                <button class="sell-btn" data-crop="wheat" data-price="2150">
+                    <i class="fas fa-tag"></i> Sell Wheat
+                </button>
+            </div>
+            <div class="price-row">
+                <span class="crop-name">Rice:</span>
+                <span class="crop-price">₹1,890/quintal</span>
+                <button class="sell-btn" data-crop="rice" data-price="1890">
+                    <i class="fas fa-tag"></i> Sell Rice
+                </button>
+            </div>
+            <div class="price-row">
+                <span class="crop-name">Cotton:</span>
+                <span class="crop-price">₹6,700/quintal</span>
+                <button class="sell-btn" data-crop="cotton" data-price="6700">
+                    <i class="fas fa-tag"></i> Sell Cotton
+                </button>
+            </div>
+        </div>
+
+        <div id="sell-form" class="sell-form hidden">
+            <h2>Sell Your Crops</h2>
+            <div class="form-group">
+                <label for="crop-type">Select Crop:</label>
+                <select id="crop-type">
+                    <option value="">-- Choose crop --</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="rice">Rice</option>
+                    <option value="cotton">Cotton</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity (quintals):</label>
+                <input type="number" id="quantity" min="1" placeholder="Enter quantity">
+            </div>
+            <div class="form-group">
+                <label for="price">Expected Price (per quintal):</label>
+                <input type="number" id="price" min="1" placeholder="Enter expected price">
+            </div>
+            <button id="submit-btn">List for Sale</button>
+        </div>
+    </div>
+
+    <div class="debug" id="debug-console">Marketplace initialized</div>
+
+    <script>
+        // Debug logging
+        function debug(msg) {
+            const console = document.getElementById('debug-console');
+            console.innerHTML += '<br>' + msg;
+            console.scrollTop = console.scrollHeight;
+        }
+
+        // Form submission
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            const crop = document.getElementById('crop-type').value;
+            const quantity = document.getElementById('quantity').value;
+            const price = document.getElementById('price').value;
+            
+            if (!crop || !quantity || !price) {
+                alert('Please fill all fields');
+                debug('Error: Missing fields');
+                return;
+            }
+
+            debug(`Listing created: ${quantity} quintals of ${crop} at ₹${price}/quintal`);
+            alert(`Success! You've listed ${quantity} quintals of ${crop} at ₹${price} per quintal`);
+            
+            // Reset form
+            document.getElementById('crop-type').value = '';
+            document.getElementById('quantity').value = '';
+            document.getElementById('price').value = '';
+        });
+
+        // Initial debug
+        debug('Marketplace ready');
+        debug('Current prices loaded');
+    </script>
+</body>
+</html>
