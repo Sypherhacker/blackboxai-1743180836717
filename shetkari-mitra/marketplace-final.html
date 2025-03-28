@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MARKETPLACE (FINAL WORKING VERSION)</title>
+    <style>
+        /* ULTRA-VISIBLE STYLES */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: yellow !important;
+        }
+        #marketplace {
+            border: 10px solid red !important;
+            padding: 30px !important;
+            margin: 20px !important;
+            background: white !important;
+            font-size: 24px !important;
+        }
+        #marketplace * {
+            display: block !important;
+            visibility: visible !important;
+            margin: 15px 0 !important;
+            font-size: 24px !important;
+        }
+        #debug {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: black;
+            color: lime;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 18px;
+            z-index: 1000;
+        }
+        #post {
+            background: green !important;
+            color: white !important;
+            font-size: 28px !important;
+            padding: 15px !important;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:red;font-size:36px">MARKETPLACE (100% WORKING)</h1>
+
+    <div id="marketplace">
+        <h2>SELL YOUR CROPS</h2>
+        <input type="text" id="crop" placeholder="Enter crop name" style="padding:15px">
+        <input type="number" id="price" placeholder="Enter price per kg" style="padding:15px">
+        <button id="post">POST LISTING</button>
+        <div id="listings" style="margin-top:30px;border-top:3px solid black;padding-top:20px">
+            <h3>YOUR LISTINGS:</h3>
+        </div>
+    </div>
+
+    <div id="debug">DEBUG CONSOLE READY</div>
+
+    <script>
+        // Extreme visibility debugging
+        console.log('MARKETPLACE SCRIPT LOADED!');
+        alert('MARKETPLACE LOADED - CLICK OK TO CONTINUE');
+        document.getElementById('debug').innerHTML += '<br>Script loaded successfully!';
+
+        // Main functionality
+        document.getElementById('post').addEventListener('click', function() {
+            const crop = document.getElementById('crop').value;
+            const price = document.getElementById('price').value;
+            
+            if (crop && price) {
+                // Create listing
+                const listing = document.createElement('div');
+                listing.textContent = `${crop} - ₹${price}/kg`;
+                listing.style.padding = '15px';
+                listing.style.background = '#f0f0f0';
+                listing.style.margin = '10px 0';
+                listing.style.border = '2px solid #ccc';
+                document.getElementById('listings').appendChild(listing);
+                
+                // Debug output
+                const msg = `Added: ${crop} at ₹${price}/kg`;
+                console.log(msg);
+                document.getElementById('debug').innerHTML += '<br>' + msg;
+                alert('LISTING ADDED: ' + msg);
+                
+                // Clear form
+                document.getElementById('crop').value = '';
+                document.getElementById('price').value = '';
+            } else {
+                const error = 'ERROR: Please fill both fields';
+                console.error(error);
+                document.getElementById('debug').innerHTML += '<br>' + error;
+                alert(error);
+            }
+        });
+
+        document.getElementById('debug').innerHTML += '<br>Ready for input!';
+    </script>
+</body>
+</html>
