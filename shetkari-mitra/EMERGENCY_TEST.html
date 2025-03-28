@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EMERGENCY VISIBILITY TEST</title>
+    <style>
+        body {
+            background: #ff0000;
+            color: #ffff00;
+            font-size: 40px;
+            text-align: center;
+            padding: 50px;
+            font-weight: bold;
+        }
+        .blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="blink">⚠️ CAN YOU SEE THIS? ⚠️</h1>
+    <p>If you see this blinking red page with yellow text:</p>
+    <p>1. Server is running</p>
+    <p>2. Port 8001 is accessible</p>
+    <p>3. Basic HTML works</p>
+    <script>
+        alert("JAVASCRIPT IS WORKING!");
+        console.log("Emergency test successful");
+    </script>
+</body>
+</html>
